@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebAPIApp.Data;
-using WebAPIApp.Models;
+using WebAPIApp.Entities;
 
 namespace WebAPIApp
 {

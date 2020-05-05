@@ -1,5 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using WebAPIApp.Models;
+using WebAPIApp.Entities;
 
 namespace WebAPIApp
 {

@@ -1,4 +1,4 @@
-namespace WebAPIApp.Models
+namespace WebAPIApp.Entities
 {
     public class User : BaseModel
     {

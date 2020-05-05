@@ -2,7 +2,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using WebAPIApp.Data.Configuration;
-using WebAPIApp.Models;
+using WebAPIApp.Entities;
 
 namespace WebAPIApp.Data
 {

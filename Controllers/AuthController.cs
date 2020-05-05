@@ -4,7 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WebAPIApp.DTOs.Request;
 using WebAPIApp.DTOs.Response;
-using WebAPIApp.Models;
+using WebAPIApp.Entities;
 
 namespace WebAPIApp.Controllers
 {
