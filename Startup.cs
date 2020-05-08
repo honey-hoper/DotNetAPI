@@ -49,6 +49,7 @@ namespace WebAPIApp
             // app.UseHttpsRedirection();
 
             app.UseExceptionHandler("/exception-handler");
+            app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
