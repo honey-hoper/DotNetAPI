@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPIApp.DTOs.Request;
 using WebAPIApp.DTOs.Response;
-using WebAPIApp.Entities;
 
 namespace WebAPIApp.Controllers
 {
@@ -36,14 +35,28 @@ namespace WebAPIApp.Controllers
         public async Task<ActionResult<UserResObject>> GetUser(long userId)
         {
             var user = await userRepository.GetUser(userId);
+            if (user == null)
+                return NotFound();
             return mapper.Map<UserResObject>(user);
         }
         
         [HttpPut("{userId}")]
         public async Task<ActionResult<UserResObject>> UpdateUser(UpdateUserReqObject ro)
         {
-            var user = await userRepository.UpdateUser(mapper.Map<User>(ro));
-            return mapper.Map<UserResObject>(user);
+            var claim = HttpContext.User.FindFirst(AppClaimTypes.Id);
+            if (claim == null)
+                return Unauthorized();
+
+            if (long.Parse(claim.Value) != ro.Id)
+                return Unauthorized();
+
+            var user = await userRepository.GetUser(ro.Id);
+            if (user == null)
+                return BadRequest();
+
+            var userWithUpdates = mapper.Map(ro, user);
+            var updatedUser = await userRepository.UpdateUser(userWithUpdates);
+            return mapper.Map<UserResObject>(updatedUser);
         }
     }
 }

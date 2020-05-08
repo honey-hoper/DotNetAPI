@@ -1,6 +1,6 @@
 ﻿namespace WebAPIApp.Entities
 {
-    public class Post : BaseModel
+    public class Post : BaseEntity
     {
         public long Id { get; set; }
         public User Author { get; set; }

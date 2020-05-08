@@ -17,7 +17,7 @@ namespace WebAPIApp
         
         public async Task<User> GetUser(long userId)
         {
-            return await dataContext.Users.FirstAsync(it => it.Id == userId);
+            return await dataContext.Users.FirstOrDefaultAsync(it => it.Id == userId);
         }
 
         public async Task<IEnumerable<User>> GetUsers()

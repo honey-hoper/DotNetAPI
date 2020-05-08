@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -38,8 +39,9 @@ namespace WebAPIApp.Controllers
             
             if (!hashService.Match(ro.Password, user.Password))
                 return Unauthorized();
-
-            var token = tokenGenerator.GenerateToken(user);
+            
+            var claims = new[] { new Claim(AppClaimTypes.Id, user.Id.ToString()) };
+            var token = tokenGenerator.GenerateToken(claims);
             return new LoginResObject { Token = token, User = mapper.Map<UserResObject>(user) };
         }
         

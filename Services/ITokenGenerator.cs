@@ -1,10 +1,9 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using WebAPIApp.Entities;
+﻿using System.Security.Claims;
 
 namespace WebAPIApp
 {
     public interface ITokenGenerator
     {
-        public string GenerateToken(User user);
+        public string GenerateToken(Claim[] claims);
     }
 }

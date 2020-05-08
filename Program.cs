@@ -12,5 +12,12 @@ namespace WebAPIApp
                 .Build()
                 .Run();
         }
+        
+        //needed for DB Design Time Tools
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+        }
     }
 }

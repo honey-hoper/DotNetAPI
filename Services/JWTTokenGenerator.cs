@@ -4,7 +4,6 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using WebAPIApp.Entities;
 
 
 namespace WebAPIApp
@@ -18,9 +17,8 @@ namespace WebAPIApp
             SECRET = configuration["TokenOptions:Secret"];
         }
         
-        public string GenerateToken(User user)
+        public string GenerateToken(Claim[] claims)
         {
-            var claims = new[] {new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())};
             var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SECRET));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var tokenDescriptor = new SecurityTokenDescriptor
