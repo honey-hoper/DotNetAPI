@@ -15,7 +15,10 @@ namespace WebAPIApp.DTOs.Response
         
         [JsonPropertyName("phone_number")]
         public string PhoneNumber { get; set; }
-        
+
+        [JsonPropertyName("profile_picture_url")]
+        public string ProfilePictureUrl { get; set; }
+
         [JsonPropertyName("is_active")]
         public bool IsActive { get; set; }
 

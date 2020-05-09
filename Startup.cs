@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using WebAPIApp.Data;
+using WebAPIApp.Services;
 
 namespace WebAPIApp
 {
@@ -26,7 +27,8 @@ namespace WebAPIApp
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITokenGenerator, JWTTokenGenerator>();
-            services.AddSingleton<IHashService, BCryptHashService>();
+            services.AddTransient<IHashService, BCryptHashService>();
+            services.AddTransient<ISaveFormFileService, SaveFormFileService>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
                 {

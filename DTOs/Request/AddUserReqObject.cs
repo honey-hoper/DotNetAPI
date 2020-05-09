@@ -15,7 +15,7 @@ namespace WebAPIApp.DTOs.Request
         
         [JsonPropertyName("phone_number")]
         public string PhoneNumber { get; set; }
-        
+
         [Required]
         [JsonPropertyName("password")]
         public string Password { get; set; }

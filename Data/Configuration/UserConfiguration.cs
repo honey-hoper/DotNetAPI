@@ -24,6 +24,9 @@ namespace WebAPIApp.Data.Configuration
             builder.Property(e => e.PhoneNumber)
                 .HasColumnName("phone_number")
                 .HasMaxLength(10);
+            builder.Property(e => e.ProfilePictureUrl)
+                .HasColumnName("profile_picture_url")
+                .HasMaxLength(255);
             builder.Property(e => e.Password)
                 .IsRequired()
                 .HasColumnName("password_hash")
